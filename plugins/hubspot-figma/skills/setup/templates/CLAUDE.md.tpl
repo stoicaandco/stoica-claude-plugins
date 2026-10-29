@@ -26,7 +26,7 @@ Classic (Design Manager) HubL theme for {{SITE_NAME}}, built from Figma. Workflo
 
 ## Preferences
 - Concise answers; minimal targeted changes; no over-engineering.
-- Keep token use low: Figma per section (delegate big reads to the `figma-reader` agent), no screenshots unless needed, measure 1440 + 375 while building, one session per task.
+- Keep token use low: Figma per section, no screenshots unless needed, measure 1440 + 375 while building, no subagents unless asked or for 3+ modules, final reports of 10 lines at most, one session per task.
 - Stable semantic class names. Figma px → relative units (`clamp()`, `%`, `max-width`).
 - Confirm step by step on complex tasks; never publish or overwrite without OK.
 

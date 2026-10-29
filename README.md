@@ -4,8 +4,8 @@ Claude Code plugins for the Stoica team. This repo is a **plugin marketplace** c
 
 | Plugin | Version | Use it to | Guide |
 |---|---|---|---|
-| `elementor-figma` | 0.4.0 | Build, compare and fix **Elementor (V4)** websites from Figma | [plugins/elementor-figma/README.md](plugins/elementor-figma/README.md) |
-| `hubspot-figma` | 0.3.0 | Build **HubSpot CMS themes** (HubL modules + templates) from Figma | [plugins/hubspot-figma/README.md](plugins/hubspot-figma/README.md) |
+| `elementor-figma` | 0.4.1 | Build, compare and fix **Elementor (V4)** websites from Figma | [plugins/elementor-figma/README.md](plugins/elementor-figma/README.md) |
+| `hubspot-figma` | 0.3.1 | Build **HubSpot CMS themes** (HubL modules + templates) from Figma | [plugins/hubspot-figma/README.md](plugins/hubspot-figma/README.md) |
 
 Both follow the same rules: you give the Figma link, Claude proposes a plan and waits for your OK, then builds. It never publishes without your OK.
 

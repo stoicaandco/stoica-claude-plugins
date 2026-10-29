@@ -26,7 +26,7 @@ Global variables, classes, default tag styles, components, header/footer/single/
 
 ## Preferences
 - Concise answers; minimal, targeted changes; no over-engineering.
-- Keep token use low: Figma per section (delegate big reads to the `figma-reader` agent), snapshots only of what you edit, no screenshots unless needed, one session per task.
+- Keep token use low: Figma per section, snapshots only of what you edit, no screenshots unless needed, no subagents unless asked or for whole pages, final reports of 10 lines at most, one session per task.
 - Stable semantic class names, not generated IDs.
 - Figma absolute units → relative (clamp / % / max-width), including container widths.
 - Confirm step by step on complex tasks; never publish or change page settings without OK.

@@ -1,6 +1,6 @@
 {
   "name": "elementor-figma",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Elementor + Figma workflow for Claude Code: site setup, page build/compare/fix, full site build, MCP pitfalls and a browser measuring helper.",
   "author": { "name": "Stoica" },
   "keywords": ["elementor", "wordpress", "figma", "mcp"]

@@ -87,7 +87,7 @@ Plain language works — the plugin's skills load automatically. Always give the
 What Claude does every time: confirm the document → back it up → read Figma → compare → **propose and wait for your OK** → build (V4 via MCP; V3 = CSS you paste) → check at 4 widths + basic accessibility → update notes. **It never publishes without your OK.**
 
 Tips
-- Using fewer tokens: one session per page/section, big Figma nodes and big pages are read by the `figma-reader` / `page-reader` agents (short summary back), snapshots only of what you edit, no screenshots unless needed.
+- Using fewer tokens: one session per page/section, whole pages can be read by the `figma-reader` / `page-reader` agents (they cost their own tokens: for one section read directly), snapshots only of what you edit, no screenshots unless needed.
 - One named chat per task: `claude -n clientx-about-hero`; resume with `claude --continue` / `claude --resume <name>`.
 - End sessions with "update progress.md and the page note".
 - New quirks Claude finds go into the site's `CLAUDE.md`; general ones are worth adding to this plugin.

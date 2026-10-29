@@ -1,7 +1,7 @@
 ---
 name: page-reader
 description: "Reads the structure of ONE Elementor document through its MCP server and returns a compact outline (element ids, types, classes, text snippets, key layout, V3/V4) instead of the raw tree. Use on large pages before editing so the big JSON never enters the main conversation (saves tokens). Read-only."
-model: sonnet
+model: haiku
 disallowedTools: Edit, Write, NotebookEdit
 ---
 

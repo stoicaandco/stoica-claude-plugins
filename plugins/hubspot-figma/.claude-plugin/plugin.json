@@ -1,6 +1,6 @@
 {
   "name": "hubspot-figma",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Figma to HubSpot CMS (classic HubL theme) workflow for Claude Code: per-client theme setup, module/template build from Figma, draft-mode upload, lint and verification.",
   "author": { "name": "Stoica" },
   "keywords": ["hubspot", "hubl", "cms", "figma"]

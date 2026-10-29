@@ -2,6 +2,9 @@
 
 ## hubspot-figma
 
+### 0.3.1
+- Subagents are opt-in (they cost their own tokens): only for 3+ modules or when asked; QA runs in the main thread with `__measureAt(..., { expected })`; reports capped at 10 lines; `qa-reviewer` on a smaller model.
+
 ### 0.3.0
 - Lean workflow (token use): rules in the build skills and project `CLAUDE.md`; `figma-reader` agent (one Figma node → short spec + downloaded assets); `measure.js` low-token mode `__measureAt(..., { expected })` returns only differences; `hubspot-docs` runs on a smaller model.
 
@@ -26,6 +29,9 @@
 - `lint.mjs`: BOM, `body` reserved, `overflow`+`aspect-ratio` on text boxes, module with no shared class.
 
 ## elementor-figma
+
+### 0.4.1
+- Subagents are opt-in (they cost their own tokens): only for whole pages or when asked; reports capped at 10 lines; `page-reader` on a smaller model.
 
 ### 0.4.0
 - Lean workflow (token use): rules in the build skill and project `CLAUDE.md`; new agents `figma-reader` (one Figma node → short spec + downloaded assets) and `page-reader` (compact outline of a large page, read-only).

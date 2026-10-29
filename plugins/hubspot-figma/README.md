@@ -71,7 +71,7 @@ package.json             the commands below
 ### What the plugin already knows (nothing to configure)
 The rules live in the plugin, so a colleague who installs it gets them automatically: module structure (3 files, inline CSS/JS), section settings in the template, shared CSS and the type scale in `base.css` first, reserved field names, layout rules for fluid cards, draft upload and fetch-back checks. Details: `skills/build/SKILL.md` and `skills/build/module-reference.md`. The generated project's `CLAUDE.md` repeats the short version.
 
-### Agents (used automatically by `site-build`)
+### Agents (only for 3+ modules or when you ask: they cost their own tokens)
 | Agent | Job |
 |---|---|
 | `module-builder` | Builds ONE module from ONE Figma node (several run in parallel, each only writes its own module folder) |

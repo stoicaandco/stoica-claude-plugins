@@ -1,7 +1,7 @@
 ---
 name: qa-reviewer
 description: "Read-only QA of ONE HubSpot module or template against its Figma node: lint, fetch-back check of what is on the portal, rendered preview vs Figma (positions, sizes, fonts, colors) at 1440/1025/768/375, accessibility basics. Reports differences with fixes; never edits files or uploads."
-model: sonnet
+model: haiku
 disallowedTools: Edit, Write, NotebookEdit
 ---
 

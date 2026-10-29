@@ -23,11 +23,11 @@ Non-global modules in `templates/partials/header.html` / `footer.html` (global p
 1. Main agent proposes the module list (name, Figma node link, fields/variants) → **wait for OK**. Anything shared (tokens, type styles, link/button patterns) is already in Phase 1.
 2. Fan out: one `module-builder` agent per module (up to 4 at once, in ONE message so they run in parallel). Each prompt contains: project folder, module name, **full Figma node link**, the shared classes/tokens that exist, and "don't touch shared files". They write only their own module folder + uniquely named images.
 3. Collect results. Apply every "Shared additions needed" yourself (once, in `base.css` / `fields.json`), fix the modules to use them, run `npm run lint` (0 errors).
-4. **Ask the user**, then `npm run upload` (draft) and fetch back. Then one `qa-reviewer` agent per module (parallel, read-only) with the preview URL if a browser is connected. Fix the blockers/majors, re-run QA on what changed, then get approval. Delete unused starter modules only with OK.
+4. **Ask the user**, then `npm run upload` (draft) and fetch back. Then QA in this thread: one `__measureAt` call per module with the Figma values as `expected` (use `qa-reviewer` agents only if the user asks for a deep review). Fix the blockers/majors, re-run QA on what changed, then get approval. Delete unused starter modules only with OK.
 A single module is not worth an agent: build it directly with the `build` skill.
 
 ## Phase 4 — Page templates
 Per page: template with `dnd_area` / `dnd_section` (background, padding, max_width at section level) / `dnd_module`. One template per structurally different layout. Verify each in preview.
 
 ## Phase 5 — QA
-Run `qa-reviewer` per template and page (parallel). Per template: Figma vs preview at 1440 / 1025 / 768 / 375, a11y basics, performance checklist (LCP image, lazy images, font weights), `npm run lint` clean, fetch-back of every touched file. Summarize in `docs/progress.md`. Publishing is the user's step; list exactly which drafts are ready.
+Run QA in this thread (`qa-reviewer` agents only on request). Per template: Figma vs preview at 1440 / 1025 / 768 / 375, a11y basics, performance checklist (LCP image, lazy images, font weights), `npm run lint` clean, fetch-back of every touched file. Summarize in `docs/progress.md`. Publishing is the user's step; list exactly which drafts are ready.

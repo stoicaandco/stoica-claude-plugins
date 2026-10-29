@@ -13,7 +13,7 @@ Project facts (account name + ID, Design Manager path, Figma link) live in the p
 3. Read `docs/progress.md` and the existing `theme/` pieces the task touches.
 
 ## 2. Read Figma (read-only)
-- **Big node or several modules: delegate to the `figma-reader` agent** (returns a short spec + downloads the assets; the raw Figma output stays out of this conversation). Otherwise: load the Figma MCP `figma-design-to-code` skill, then `get_design_context` on the node. Its output is a **reference** (React/Tailwind) to rewrite as HubL/CSS: take real copy, spacing, structure from it.
+- **Whole page or 3+ sections: delegate to the `figma-reader` agent** (it costs its own tokens, so for one section read the node directly) (returns a short spec + downloads the assets; the raw Figma output stays out of this conversation). Otherwise: load the Figma MCP `figma-design-to-code` skill, then `get_design_context` on the node. Its output is a **reference** (React/Tailwind) to rewrite as HubL/CSS: take real copy, spacing, structure from it.
 - Tokens: `get_variable_defs` on a style-guide frame → `theme/fields.json`; never hex values eyeballed from a screenshot.
 - Icons/images: `download_assets` exports (never hand-drawn SVG paths); recolorable icons = tiny inline SVG with `fill: currentColor`/CSS var. Photos → `theme/images/` (jpg/png/svg only), then `npm run optimize-images`.
 - Ignore invisible nodes; note placeholder copy that differs from final.
@@ -62,7 +62,8 @@ Update `docs/progress.md` (module → Figma link, status, open diffs). **Learn a
 - Read Figma **per section node**, never a whole page; for anything big delegate the read to the `figma-reader` agent (it returns a short spec and downloads the assets), so the raw Figma output never enters this conversation.
 - No screenshots unless something looks wrong: measured numbers are cheaper and more exact.
 - Measure at 1440 + 375 while building, all four widths once at the end. Pass the Figma values as `expected` to `__measureAt` so only the differences come back.
-- Agents only for 3+ modules; one module = build it directly.
+- Agents cost their own tokens (a cold start re-reads the skills and the Figma node): use them only when the user asks or for 3+ modules/pages, never for one section. Do QA in this thread: `__measureAt(..., { expected })`.
+- Final report: 10 lines at most (what changed, what is unverified, what you need from the user). No recap tables, no re-listing of files.
 - One session per task (one module/page); state lives in `docs/progress.md`. `/compact` if the session grows.
 
 ## Pitfalls (verified)

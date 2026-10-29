@@ -71,10 +71,12 @@ Update the note (IDs, settings, reference values, open diffs, short Figma-vs-liv
 **Learn as you go:** if you hit an Elementor/MCP quirk, a workaround or a site convention not covered here, add one line to `CLAUDE.md` → "Site-specific notes & pitfalls" and tell the user in one line if it looks general enough to add to this plugin.
 
 ## Lean workflow (keeps token use down)
-- Read Figma per section node, never a whole page; delegate big reads to the `figma-reader` agent (short spec back, raw output stays out of this conversation).
+- Read Figma per section node, never a whole page; for a whole page delegate to the `figma-reader` agent (it costs its own tokens, so for one section read the node directly).
 - Read page structure with `include_content` only for the elements you will edit; for a large page ask the `page-reader` agent for a compact outline instead of reading the tree yourself.
 - Snapshots: only the top-level elements you will edit, not the whole page.
 - No screenshots unless something looks wrong; measure at 1440 + 375 while building, all four widths once at the end.
+- Agents cost their own tokens (a cold start re-reads the skills and the Figma node): use them only when the user asks or for 3+ modules/pages, never for one section.
+- Final report: 10 lines at most (what changed, what is unverified, what you need from the user). No recap tables, no re-listing of files.
 - One session per task (one page/section); state lives in `docs/progress.md`. `/compact` if the session grows.
 
 ## MCP pitfalls (verified)
