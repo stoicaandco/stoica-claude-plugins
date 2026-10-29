@@ -37,12 +37,13 @@ modules/<Name>.module/
 - Link field default: `{"url":{"content_id":null,"type":"EXTERNAL","href":"#"}}`; read `link.url.href|default('#', true)`.
 
 ## CSS layout rules (these caused real bugs)
+- **A module fills its container.** Width, side gutters and vertical spacing belong to the template's `dnd_section` (`max_width` caps the width; `padding` with `default` and `mobile` keys sets top/bottom/left/right). In the module: no `max-width` + `margin: 0 auto` wrapper, no `--content-width` / `--section-pad-x`, no page gutters, no fixed outer width; only component-internal spacing (card padding, gaps) and optional style fields. A contained panel is the module's own wrapper at 100% of the section. Exception: Header/Footer global partials have no section and may keep their own container. `npm run lint` errors on the width tokens.
 - Design px → relative. Inside a card/tile, scale with the card: `container-type: inline-size` on the card, children use `clamp(min, Ncqw, figma-px)` for padding, gaps, type, logo height (N = figma-px ÷ card-width × 100). Fixed px inside a fluid card overflows when the card is narrower than in Figma.
 - Never `overflow:hidden` on a box that has `aspect-ratio` (content gets clipped, links disappear). Let it grow.
 - Media pinned to the card bottom: `flex:none; margin-top:auto; aspect-ratio:…` — otherwise flex shrinks the photo and cards no longer align.
 - Decorations (bars, shapes) = CSS (`repeating-linear-gradient`, pseudo-elements), positioned in `cqw`, no image asset.
 - Icons: inline SVG, `currentColor` (+ one CSS var for a fill), path data from the Figma export, never redrawn. Put the SVG in a `{% macro %}` when used more than once.
-- A contained panel (rounded corners, own background, narrower than the viewport) = the module's wrapper element with a `style.panel_background` field; the template section only caps `max_width` and carries a light page colour.
+- A contained panel (rounded corners, own background, narrower than the viewport) = the module's wrapper element with a `style.panel_background` field; the template section only caps `max_width` and carries a light page colour. Side gutters on small screens = the section's `padding` left/right (`default` + `mobile`), never a margin inside the module. HubSpot's docs do not say whether `max_width` includes the section padding: measure the content width at 1440 and just below `max_width`.
 - Mobile: if the design has no mobile frame, stack in one column ≤1024px and say so in the plan.
 
 ## Files and encoding

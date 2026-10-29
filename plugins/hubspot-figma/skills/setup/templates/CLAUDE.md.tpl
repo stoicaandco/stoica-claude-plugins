@@ -17,7 +17,7 @@ Classic (Design Manager) HubL theme for {{SITE_NAME}}, built from Figma. Workflo
 ## Structure rules (never break)
 - Module = `meta.json` + `fields.json` + `module.html` only. CSS in `{% require_css %}<style>{% scope_css %}…{% end_scope_css %}</style>{% end_require_css %}`, JS as inline `<script>` at the bottom. No `module.css` / `module.js`.
 - Shared CSS (buttons, eyebrow, links, heading defaults) only in `theme/css/base.css`.
-- Section layout (background, padding, max_width) lives in the template's `dnd_section`, not in modules. Never `full_width` + `max_width` together.
+- Section layout (background, padding, max_width) lives in the template's `dnd_section`, not in modules. Never `full_width` + `max_width` together. A module fills its container: no `max-width` + `margin: 0 auto` wrapper, no page gutters, no fixed outer width in a module; width = the section's `max_width`, gutters and vertical spacing = the section's `padding` (`default` + `mobile`).
 - Tokens (colors, fonts, content width) in `theme/fields.json` → `:root` vars in `base.html`.
 - Header/footer = non-global modules inside `{% global_partial %}`.
 - A variant of a section = a `choice` field, not a second module.

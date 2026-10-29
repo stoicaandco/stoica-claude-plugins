@@ -93,6 +93,14 @@ for (const d of moduleDirs) {
   const css = [...plain.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)].map((m) => m[1]).join('\n');
   const js = [...plain.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1]).join('\n');
   const markup = plain.replace(/<style[\s\S]*?<\/style>/gi, '').replace(/<script[\s\S]*?<\/script>/gi, '');
+  // width and spacing belong to the template's dnd_section: a module fills its container (Header/Footer partials have no section)
+  if (!/[\\/](Header|Footer)\.module$/.test(d)) {
+    if (/var\(--(content-width|section-pad-x)\)/.test(css)) err(d, 'module sets its own page width/gutters (--content-width / --section-pad-x): a module fills its container; width (max_width), side gutters and section spacing belong on the template\'s dnd_section');
+    for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+      const w = m[2].match(/max-width\s*:\s*(\d+)px/);
+      if (w && Number(w[1]) >= 900 && /margin(-inline)?\s*:[^;]*auto/.test(m[2])) warn(d, `"${m[1].trim().slice(0, 40)}" centers a fixed ${w[1]}px container inside the module: the section's max_width should set the width`);
+    }
+  }
   for (const img of markup.match(/<img\b[^>]*>/gi) || []) {
     if (!/\balt=/.test(img)) err(d, `<img> without alt attribute: ${img.slice(0, 60)}`);
     else if (!/\b(loading|fetchpriority)=/.test(img)) warn(d, '<img> without loading="lazy" (or fetchpriority="high" for the LCP image)');

@@ -2,6 +2,9 @@
 
 ## hubspot-figma
 
+### 0.3.2
+- Fix (root cause of "full-width module with a fixed-width container inside"): all starter modules set their own `max-width` + side padding, so every new module copied it. Starter modules now fill their container; `page.html` sections carry `max_width` and gutters (`padding` default + mobile); new rule in the skill, module reference and project `CLAUDE.md`; lint errors on `--content-width` / `--section-pad-x` in modules and warns on a centered fixed-width container.
+
 ### 0.3.1
 - Subagents are opt-in (they cost their own tokens): only for 3+ modules or when asked; QA runs in the main thread with `__measureAt(..., { expected })`; reports capped at 10 lines; `qa-reviewer` on a smaller model.
 
