@@ -1,0 +1,103 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "03 — Ideas into reality"
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Big ideas. Real-world impact."
+  },
+  {
+    "name": "projects",
+    "label": "Projects",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 8, "default": 3, "sorting_label_field": "projects.title" },
+    "children": [
+      { "name": "image", "label": "Image", "type": "image", "default": { "src": "", "alt": "" } },
+      { "name": "tag", "label": "Tag", "type": "text", "default": "CATEGORY" },
+      { "name": "title", "label": "Title", "type": "text", "default": "Project title" },
+      { "name": "description", "label": "Description", "type": "text", "default": "Project description." },
+      { "name": "caption", "label": "Caption", "type": "text", "default": "A short line about this project." },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      }
+    ],
+    "default": [
+      {
+        "image": { "src": "", "alt": "" },
+        "tag": "INFRASTRUCTURE",
+        "title": "Coastal connections",
+        "description": "A coastal crossing designed to connect communities, withstand a demanding climate and sit lightly within its landscape.",
+        "caption": "A considered crossing. Stronger connections.",
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      },
+      {
+        "image": { "src": "", "alt": "" },
+        "tag": "ENERGY TRANSITION",
+        "title": "The next energy landscape",
+        "description": "Integrating wind generation with the terrain and the grid to build a more resilient clean-energy system.",
+        "caption": "Clean power, shaped by the land it serves.",
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      },
+      {
+        "image": { "src": "", "alt": "" },
+        "tag": "ADVANCED INDUSTRY",
+        "title": "Precision in motion",
+        "description": "Precision-designed components that improve reliability, reduce material waste and keep essential industry moving.",
+        "caption": "Engineering that holds up under pressure.",
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "name": "accent_color",
+        "label": "Accent color",
+        "type": "color",
+        "default": { "color": "#D6EDAA", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "", "opacity": 100 },
+      "text_color": { "color": "#FFFFFF", "opacity": 100 },
+      "accent_color": { "color": "#D6EDAA", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

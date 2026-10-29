@@ -1,0 +1,75 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "The next challenge starts with a conversation."
+  },
+  {
+    "name": "title_line_1",
+    "label": "Title line 1",
+    "type": "text",
+    "default": "What could we"
+  },
+  {
+    "name": "title_line_2",
+    "label": "Title line 2",
+    "type": "text",
+    "default": "build together?"
+  },
+  {
+    "name": "button_text",
+    "label": "Button text",
+    "type": "text",
+    "default": "Talk to our team"
+  },
+  {
+    "name": "button_link",
+    "label": "Button link",
+    "type": "link",
+    "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "name": "accent_color",
+        "label": "Accent color",
+        "type": "color",
+        "default": { "color": "#D6EDAA", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "", "opacity": 100 },
+      "text_color": { "color": "#FFFFFF", "opacity": 100 },
+      "accent_color": { "color": "#D6EDAA", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

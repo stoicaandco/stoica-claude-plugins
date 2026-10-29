@@ -1,0 +1,114 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .approach {
+    background: {{ module.style.background.color|default('transparent', true) }};
+    color: {{ module.style.text_color.color|default('var(--color-ink)', true) }};
+    font-family: var(--font-sans);
+  }
+
+  .approach-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--section-pad-x);
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  @media (min-width: 900px) {
+    .approach-inner {
+      flex-direction: row;
+      gap: 112px;
+    }
+  }
+
+  .approach-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 480px;
+    flex: none;
+  }
+
+  .approach-eyebrow {
+  color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  }
+
+  .approach-title {
+    font-size: clamp(28px, 3.5vw, 48px);
+    line-height: 1.1;
+  }
+
+  .approach-description {
+    font-size: 18px;
+    line-height: 1.5;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  }
+
+  .approach-steps {
+    flex: 1;
+  }
+
+  .approach-step {
+    display: flex;
+    gap: 32px;
+    padding: 28px 0;
+    border-top: 1px solid {{ module.style.divider_color.color|default('var(--color-line)', true) }};
+  }
+
+  .approach-steps .approach-step:last-child {
+    border-bottom: 1px solid {{ module.style.divider_color.color|default('var(--color-line)', true) }};
+  }
+
+  .approach-step-index {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+    flex: none;
+    padding-top: 4px;
+  }
+
+  .approach-step-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .approach-step-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="approach">
+  <div class="approach-inner">
+    <div class="approach-heading">
+      {% if module.eyebrow %}<p class="eyebrow approach-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+      {% if module.title_line_1 or module.title_line_2 %}
+        <h2 class="approach-title">
+          {% if module.title_line_1 %}{{ module.title_line_1 }}<br>{% endif %}
+          {{ module.title_line_2 }}
+        </h2>
+      {% endif %}
+      {% if module.description %}
+        <div class="approach-description">{{ module.description }}</div>
+      {% endif %}
+    </div>
+
+    <div class="approach-steps">
+      {% for step in module.steps %}
+        <div class="approach-step">
+          {% if step.index %}<p class="approach-step-index">{{ step.index }}</p>{% endif %}
+          <div>
+            {% if step.title %}<p class="approach-step-title">{{ step.title }}</p>{% endif %}
+            {% if step.description %}<p class="approach-step-description">{{ step.description }}</p>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

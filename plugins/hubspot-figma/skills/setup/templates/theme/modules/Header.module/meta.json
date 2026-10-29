@@ -1,0 +1,6 @@
+{
+  "label": "Header",
+  "content_types": ["SITE_PAGE", "LANDING_PAGE", "BLOG_POST"],
+  "global": false,
+  "categories": ["FUNCTIONALITY"]
+}

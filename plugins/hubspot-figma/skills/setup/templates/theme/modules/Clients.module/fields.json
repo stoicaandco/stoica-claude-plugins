@@ -1,0 +1,82 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "Working with people who think ahead"
+  },
+  {
+    "name": "clients",
+    "label": "Clients",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 8, "default": 6, "sorting_label_field": "clients.client_name" },
+    "children": [
+      { "name": "client_name", "label": "Name", "type": "text", "default": "Client" },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["northline", "Northline"],
+          ["common-ground", "Common ground"],
+          ["veldt", "Veldt"],
+          ["arcwell", "Arcwell"],
+          ["forma", "Forma"]
+        ],
+        "default": "northline"
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      }
+    ],
+    "default": [
+      { "client_name": "NORTHLINE", "icon": "northline", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } },
+      { "client_name": "common ground", "icon": "common-ground", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } },
+      { "client_name": "VELDT", "icon": "veldt", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } },
+      { "client_name": "arcwell", "icon": "arcwell", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } },
+      { "client_name": "NORTHLINE", "icon": "northline", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } },
+      { "client_name": "FORMA", "icon": "forma", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "muted_color",
+        "label": "Muted text color",
+        "type": "color",
+        "default": { "color": "#646C66", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "", "opacity": 100 },
+      "muted_color": { "color": "#646C66", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

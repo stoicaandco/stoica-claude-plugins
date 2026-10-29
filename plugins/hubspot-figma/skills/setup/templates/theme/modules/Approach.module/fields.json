@@ -1,0 +1,93 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "04 — The way forward"
+  },
+  {
+    "name": "title_line_1",
+    "label": "Title line 1",
+    "type": "text",
+    "default": "Big-picture thinking."
+  },
+  {
+    "name": "title_line_2",
+    "label": "Title line 2",
+    "type": "text",
+    "default": "Every-detail care."
+  },
+  {
+    "name": "description",
+    "label": "Description",
+    "type": "richtext",
+    "default": "<p>One connected team, from the questions that shape a project to the details that make it possible.</p>"
+  },
+  {
+    "name": "steps",
+    "label": "Steps",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 6, "default": 3, "sorting_label_field": "steps.title" },
+    "children": [
+      { "name": "index", "label": "Index", "type": "text", "default": "01" },
+      { "name": "title", "label": "Title", "type": "text", "default": "Step title" },
+      { "name": "description", "label": "Description", "type": "text", "default": "Step description." }
+    ],
+    "default": [
+      { "index": "01", "title": "Understand the whole picture", "description": "We listen first. Aligning ambition, context and constraints before we draw a line." },
+      { "index": "02", "title": "Connect the right expertise", "description": "We bring disciplines together early, so every decision works harder." },
+      { "index": "03", "title": "Make progress tangible", "description": "We turn good thinking into buildable solutions, with care at every stage." }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#18221F", "opacity": 100 }
+      },
+      {
+        "name": "muted_color",
+        "label": "Muted text color",
+        "type": "color",
+        "default": { "color": "#646C66", "opacity": 100 }
+      },
+      {
+        "name": "divider_color",
+        "label": "Divider color",
+        "type": "color",
+        "default": { "color": "#D9DED7", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "", "opacity": 100 },
+      "text_color": { "color": "#18221F", "opacity": 100 },
+      "muted_color": { "color": "#646C66", "opacity": 100 },
+      "divider_color": { "color": "#D9DED7", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

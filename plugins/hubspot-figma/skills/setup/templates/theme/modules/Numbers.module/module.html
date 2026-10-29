@@ -1,0 +1,110 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .numbers {
+    background: {{ module.style.background.color|default('transparent', true) }};
+    color: {{ module.style.text_color.color|default('var(--color-ink)', true) }};
+    font-family: var(--font-sans);
+  }
+
+  .numbers-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--section-pad-x);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .numbers-eyebrow {
+  color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  }
+
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  @media (min-width: 700px) {
+    .numbers-grid {
+      grid-template-columns: repeat({{ module.style.columns|default(4, true) }}, 1fr);
+    }
+  }
+
+  .metric-value {
+    font-weight: 400;
+    font-size: clamp(44px, 5.5vw, 76px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .metric-label {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .metric-description {
+    font-size: 13px;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="numbers" data-numbers>
+  <div class="numbers-inner">
+    {% if module.eyebrow %}<p class="eyebrow numbers-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+
+    <div class="numbers-grid">
+      {% for metric in module.metrics %}
+        <div>
+          <p class="metric-value">
+            <span data-count-to="{{ metric.value_number }}">0</span>{{ metric.value_suffix }}
+          </p>
+          {% if metric.metric_label %}<p class="metric-label">{{ metric.metric_label }}</p>{% endif %}
+          {% if metric.description %}<p class="metric-description">{{ metric.description }}</p>{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.currentScript.previousElementSibling;
+    if (!section || !section.hasAttribute('data-numbers')) return;
+    const counters = Array.prototype.slice.call(section.querySelectorAll('[data-count-to]'));
+    if (counters.length === 0) return;
+
+    function animate(el) {
+      const target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+      const duration = 900;
+      let start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      counters.forEach(function (el) { el.textContent = el.getAttribute('data-count-to'); });
+      return;
+    }
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { observer.observe(el); });
+  })();
+</script>

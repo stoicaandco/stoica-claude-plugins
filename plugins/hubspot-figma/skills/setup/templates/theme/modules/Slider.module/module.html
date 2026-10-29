@@ -1,0 +1,230 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .testimonials-section {
+    background: {{ module.style.background.color|default('transparent', true) }};
+    color: {{ module.style.text_color.color|default('var(--color-ink)', true) }};
+    font-family: var(--font-sans);
+  }
+
+  .testimonials-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--section-pad-x);
+  }
+
+  .testimonials-eyebrow {
+  color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  margin-bottom: 32px;
+  }
+
+  .testimonials-heading {
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.2;
+    margin: 0 0 40px;
+  }
+
+  .testimonial-card {
+    background: {{ module.style.card_background.color|default('var(--color-paper)', true) }};
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @media (min-width: 800px) {
+    .testimonial-card {
+      flex-direction: row;
+      padding: 32px;
+      gap: 40px;
+    }
+  }
+
+  .testimonial-portrait {
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: var(--color-line);
+    width: 100%;
+  }
+
+  @media (min-width: 800px) {
+    .testimonial-portrait {
+      width: 336px;
+      flex: none;
+    }
+  }
+
+  .testimonial-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonial-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    flex: 1;
+  }
+
+  .testimonial-client-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+    margin-bottom: 20px;
+  }
+
+  .testimonial-quote {
+    font-size: clamp(22px, 2.6vw, 32px);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .testimonial-author {
+    font-size: 16px;
+  }
+
+  .testimonial-role {
+    font-size: 14px;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+    margin-top: 4px;
+  }
+
+  .testimonial-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+
+  .testimonial-counter {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  }
+
+  .testimonial-controls {
+    display: flex;
+    gap: 12px;
+  }
+
+  .testimonial-arrow {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-pill);
+    border: none;
+    background: var(--color-white);
+    color: {{ module.style.text_color.color|default('var(--color-ink)', true) }};
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+  }
+
+  .testimonial-arrow:hover {
+    opacity: 0.7;
+  }
+
+  .testimonial-track {
+    display: grid;
+  }
+
+  .slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .slide[data-active="true"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide {
+      transition: none;
+    }
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    {% if module.eyebrow %}<p class="eyebrow testimonials-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+    {% if module.heading %}<h2 class="testimonials-heading">{{ module.heading }}</h2>{% endif %}
+
+    <div data-slider>
+      <div class="testimonial-track">
+        {% for slide in module.slides %}
+          <div class="testimonial-card slide" data-slide data-index="{{ loop.index0 }}" data-active="{{ 'true' if loop.index0 == 0 else 'false' }}">
+            <div class="testimonial-portrait">
+              {% if slide.portrait.src %}
+                <img src="{{ slide.portrait.src }}" alt="{{ slide.portrait.alt|default('', true) }}" loading="lazy" decoding="async" />
+              {% elif loop.index0 == 0 %}
+                <img src="{{ get_asset_url('../../images/testimonial-elena-ward.jpg') }}" alt="Portrait of Elena Ward" loading="lazy" decoding="async" />
+              {% elif loop.index0 == 1 %}
+                <img src="{{ get_asset_url('../../images/testimonial-marcus-reid.jpg') }}" alt="Portrait of Marcus Reid" loading="lazy" decoding="async" />
+              {% endif %}
+            </div>
+            <div class="testimonial-content">
+              <div>
+                {% if slide.client_tag %}<p class="testimonial-client-tag">{{ slide.client_tag }}</p>{% endif %}
+                <p class="testimonial-quote">&ldquo;{{ slide.quote }}&rdquo;</p>
+              </div>
+              <div>
+                <p class="testimonial-author">{{ slide.author }}</p>
+                {% if slide.role %}<p class="testimonial-role">{{ slide.role }}</p>{% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if module.slides|length > 1 %}
+        <div class="testimonial-footer">
+          <p class="testimonial-counter" data-slider-counter>01 / {{ '%02d'|format(module.slides|length) }}</p>
+          <div class="testimonial-controls">
+            <button type="button" class="testimonial-arrow" data-slider-prev aria-label="Previous testimonial">&larr;</button>
+            <button type="button" class="testimonial-arrow" data-slider-next aria-label="Next testimonial">&rarr;</button>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const root = document.currentScript.previousElementSibling.querySelector('[data-slider]');
+    if (!root) return;
+    const slides = Array.prototype.slice.call(root.querySelectorAll('[data-slide]'));
+    const prevBtn = root.querySelector('[data-slider-prev]');
+    const nextBtn = root.querySelector('[data-slider-next]');
+    const counter = root.querySelector('[data-slider-counter]');
+    const count = slides.length;
+    if (count === 0) return;
+    let activeIndex = 0;
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function setActive(index) {
+      activeIndex = (index + count) % count;
+      slides.forEach(function (slide) {
+        const isActive = Number(slide.getAttribute('data-index')) === activeIndex;
+        slide.setAttribute('data-active', isActive ? 'true' : 'false');
+      });
+      if (counter) counter.textContent = pad(activeIndex + 1) + ' / ' + pad(count);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { setActive(activeIndex - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { setActive(activeIndex + 1); });
+  })();
+</script>

@@ -1,0 +1,79 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "Experience that adds up"
+  },
+  {
+    "name": "metrics",
+    "label": "Metrics",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 6, "default": 4, "sorting_label_field": "metrics.metric_label" },
+    "children": [
+      { "name": "value_number", "label": "Value", "type": "number", "default": 24 },
+      { "name": "value_suffix", "label": "Value suffix", "type": "text", "default": "" },
+      { "name": "metric_label", "label": "Label", "type": "text", "default": "years of independent thinking" },
+      { "name": "description", "label": "Description", "type": "text", "default": "Built on long-term relationships." }
+    ],
+    "default": [
+      { "value_number": 24, "value_suffix": "", "metric_label": "years of independent thinking", "description": "Built on long-term relationships." },
+      { "value_number": 180, "value_suffix": "+", "metric_label": "specialists, one connected team", "description": "Expertise without the silos." },
+      { "value_number": 12, "value_suffix": "", "metric_label": "countries, shared ambition", "description": "Local understanding. Wider perspective." },
+      { "value_number": 320, "value_suffix": "+", "metric_label": "projects brought to life", "description": "From first idea to lasting impact." }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "columns",
+        "label": "Columns",
+        "type": "choice",
+        "display": "select",
+        "choices": [["2", "2"], ["3", "3"], ["4", "4"]],
+        "default": "4"
+      },
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#18221F", "opacity": 100 }
+      },
+      {
+        "name": "muted_color",
+        "label": "Muted text color",
+        "type": "color",
+        "default": { "color": "#646C66", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "columns": "4",
+      "background": { "color": "", "opacity": 100 },
+      "text_color": { "color": "#18221F", "opacity": 100 },
+      "muted_color": { "color": "#646C66", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

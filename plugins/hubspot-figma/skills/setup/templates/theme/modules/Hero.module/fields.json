@@ -1,0 +1,140 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "Independent thinking. Lasting impact."
+  },
+  {
+    "name": "heading_type",
+    "label": "Heading type",
+    "type": "choice",
+    "display": "select",
+    "choices": [["1", "H1"], ["2", "H2"]],
+    "default": "1"
+  },
+  {
+    "name": "title_line_1",
+    "label": "Title line 1",
+    "type": "text",
+    "default": "Engineering a"
+  },
+  {
+    "name": "title_line_2",
+    "label": "Title line 2",
+    "type": "text",
+    "default": "world that lasts."
+  },
+  {
+    "name": "description",
+    "label": "Description",
+    "type": "richtext",
+    "default": "<p>We bring clarity to complex challenges. Designing the energy, infrastructure and industries that move life forward.</p>"
+  },
+  {
+    "name": "add_button",
+    "label": "Add button",
+    "type": "boolean",
+    "display": "toggle",
+    "default": true
+  },
+  {
+    "name": "buttons",
+    "label": "Buttons",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 2, "default": 1, "sorting_label_field": "buttons.button_text" },
+    "visibility": { "controlling_field_path": "add_button", "controlling_value_regex": "true", "operator": "EQUAL" },
+    "children": [
+      { "name": "button_text", "label": "Button text", "type": "text", "default": "Explore our expertise" },
+      {
+        "name": "button_link",
+        "label": "Button link",
+        "type": "link",
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      },
+      {
+        "name": "button_style",
+        "label": "Button style",
+        "type": "choice",
+        "display": "select",
+        "choices": [["button--primary", "Fill"], ["button--outline", "Outline"]],
+        "default": "button--primary"
+      }
+    ],
+    "default": [
+      {
+        "button_text": "Explore our expertise",
+        "button_link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } },
+        "button_style": "button--primary"
+      }
+    ]
+  },
+  {
+    "name": "image",
+    "label": "Landscape image",
+    "type": "image",
+    "default": { "src": "", "alt": "Landscape photography" }
+  },
+  {
+    "name": "caption_left",
+    "label": "Caption (left)",
+    "type": "text",
+    "default": "01 / Energy transition"
+  },
+  {
+    "name": "caption_center",
+    "label": "Caption (center)",
+    "type": "text",
+    "default": "A longer view. A lighter footprint."
+  },
+  {
+    "name": "caption_right",
+    "label": "Caption (right)",
+    "type": "text",
+    "default": "Scroll to explore ↓"
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#18221F", "opacity": 100 }
+      },
+      {
+        "name": "muted_color",
+        "label": "Muted text color",
+        "type": "color",
+        "default": { "color": "#646C66", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "", "opacity": 100 },
+      "text_color": { "color": "#18221F", "opacity": 100 },
+      "muted_color": { "color": "#646C66", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

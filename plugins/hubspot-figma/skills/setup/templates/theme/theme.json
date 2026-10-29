@@ -1,0 +1,11 @@
+{
+  "label": "__SITE_NAME__",
+  "enable_domain_stylesheets": false,
+  "responsive_breakpoints": [
+    {
+      "name": "mobile",
+      "mediaQuery": "@media (max-width: 767px)",
+      "previewWidth": { "value": 520 }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+/*
+  Shared, site-wide CSS. Loaded once via require_css() from base.html.
+  Anything used identically by more than one module belongs here, not
+  re-declared inside a module's own scope_css block (which is scoped to
+  that single module instance and can't be shared across modules).
+*/
+
+/* ---- Typography defaults ---- */
+h1, h2, h3 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+h1 { font-size: clamp(40px, 6.5vw, 88px); }
+h2 { font-size: clamp(28px, 4vw, 48px); }
+h3 { font-size: 20px; }
+
+/* Mono "eyebrow" label (section kicker / tag) */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ---- Underlined links ---- */
+/* Bare hover-underline, for nav/footer link lists */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transition: right 0.25s ease;
+}
+
+.link-underline:hover::after {
+  right: 0;
+}
+
+/* Hover-underline + trailing arrow, for standalone CTAs ("Explore all →") */
+.link-arrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  color: inherit;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.link-arrow::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transition: right 0.25s ease;
+}
+
+.link-arrow:hover::after {
+  right: 0;
+}
+
+/* ---- Buttons ---- */
+.button--primary,
+.button--outline,
+.button--accent {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  transition: opacity 0.2s ease;
+}
+
+.button--primary svg,
+.button--outline svg,
+.button--accent svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  transition: transform 0.2s ease;
+}
+
+.button--primary:hover svg,
+.button--outline:hover svg,
+.button--accent:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.button--primary {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.button--primary:hover {
+  opacity: 0.85;
+}
+
+.button--outline {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+}
+
+.button--accent {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+.button--accent:hover {
+  opacity: 0.85;
+}
+
+/* ---- Type scale helpers (map Figma text styles here, e.g. Body small / Body big) ---- */
+.text-small { font-size: 14px; line-height: 1.4; }
+.text-big { font-size: 20px; line-height: 1.4; }
+
+/* ---- Icon links / buttons (28px arrow icon, optional text) ---- */
+.link-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.link-icon--small {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.icon-arrow {
+  display: block;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  transition: transform 0.2s ease;
+}
+
+.icon-arrow .fill {
+  fill: var(--accent, var(--color-accent));
+}
+
+.link-icon:hover .icon-arrow,
+.icon-button:hover .icon-arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-arrow {
+    transition: none;
+  }
+}

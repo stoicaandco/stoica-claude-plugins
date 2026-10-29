@@ -1,0 +1,238 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .gallery {
+    background: {{ module.style.background.color|default('transparent', true) }};
+    color: {{ module.style.text_color.color|default('var(--color-ink)', true) }};
+    font-family: var(--font-sans);
+  }
+
+  .gallery-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--section-pad-x);
+  }
+
+  .gallery-eyebrow {
+  color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  margin-bottom: 16px;
+  }
+
+  .gallery-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  @media (min-width: 800px) {
+    .gallery-header {
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+  }
+
+  .gallery-title {
+    font-size: clamp(28px, 3.5vw, 40px);
+  }
+
+
+  .gallery-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .gallery-filter {
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 12px 20px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    cursor: pointer;
+    background: transparent;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .gallery-filter[data-active="true"] {
+    background: {{ module.style.text_color.color|default('var(--color-ink)', true) }};
+    color: var(--color-white);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 700px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .gallery-grid {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .gallery-tile.size-large { grid-column: span 7; grid-row: span 2; }
+    .gallery-tile.size-small { grid-column: span 5; }
+    .gallery-tile.size-medium { grid-column: span 4; }
+  }
+
+  .gallery-tile {
+    position: relative;
+    display: block;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-line);
+    text-decoration: none;
+    color: var(--color-white);
+  }
+
+  .gallery-tile.size-large { aspect-ratio: 760 / 560; }
+  .gallery-tile.size-medium { aspect-ratio: 416 / 360; }
+  .gallery-tile.size-small { aspect-ratio: 512 / 268; }
+
+  .gallery-tile[hidden] {
+    display: none;
+  }
+
+  .gallery-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  .gallery-tile:hover img {
+    transform: scale(1.05);
+  }
+
+  .gallery-tile-scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.44);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-tile-caption {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .gallery-tile:hover .gallery-tile-scrim,
+  .gallery-tile:hover .gallery-tile-caption,
+  .gallery-tile:focus-visible .gallery-tile-scrim,
+  .gallery-tile:focus-visible .gallery-tile-caption {
+    opacity: 1;
+    transform: none;
+  }
+
+  .gallery-tile-caption p:first-child {
+    font-size: 22px;
+  }
+
+  .gallery-tile-caption p:last-child {
+    font-size: 15px;
+    opacity: 0.9;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="gallery" data-gallery>
+  <div class="gallery-inner">
+    {% if module.eyebrow %}<p class="eyebrow gallery-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+
+    <div class="gallery-header">
+      {% if module.heading %}<h2 class="gallery-title">{{ module.heading }}</h2>{% endif %}
+      {% if module.link_text %}
+        <a href="{{ module.link_href.url.href|default('#', true) }}" class="link-arrow">
+          {{ module.link_text }} <span aria-hidden="true">&rarr;</span>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="gallery-filters" data-gallery-filters></div>
+
+    <div class="gallery-grid" data-gallery-grid>
+      {% for tile in module.tiles %}
+        <div class="gallery-tile size-{{ tile.size }}" data-gallery-tile data-category="{{ tile.category }}" tabindex="0">
+          {% if tile.image.src %}
+            <img src="{{ tile.image.src }}" alt="{{ tile.image.alt|default('', true) }}" loading="lazy" decoding="async" />
+          {% elif loop.index0 == 0 %}
+            <img src="{{ get_asset_url('../../images/gallery-places.jpg') }}" alt="Timber-framed building courtyard" loading="lazy" decoding="async" />
+          {% elif loop.index0 == 1 %}
+            <img src="{{ get_asset_url('../../images/gallery-people.jpg') }}" alt="Two colleagues reviewing plans at a table" loading="lazy" decoding="async" />
+          {% elif loop.index0 == 2 %}
+            <img src="{{ get_asset_url('../../images/card-industry.jpg') }}" alt="Close-up of precision turbine blades" loading="lazy" decoding="async" />
+          {% elif loop.index0 == 3 %}
+            <img src="{{ get_asset_url('../../images/gallery-connections.jpg') }}" alt="A cable-stayed bridge crossing a fjord" loading="lazy" decoding="async" />
+          {% elif loop.index0 == 4 %}
+            <img src="{{ get_asset_url('../../images/card-energy.jpg') }}" alt="Wind turbines on a coastal hillside" loading="lazy" decoding="async" />
+          {% elif loop.index0 == 5 %}
+            <img src="{{ get_asset_url('../../images/gallery-leadership.jpg') }}" alt="Portrait of a team member in an office" loading="lazy" decoding="async" />
+          {% endif %}
+          <div class="gallery-tile-scrim"></div>
+          <div class="gallery-tile-caption">
+            {% if tile.title %}<p>{{ tile.title }}</p>{% endif %}
+            {% if tile.description %}<p>{{ tile.description }}</p>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const section = document.currentScript.previousElementSibling;
+    if (!section || !section.hasAttribute('data-gallery')) return;
+    const tiles = Array.prototype.slice.call(section.querySelectorAll('[data-gallery-tile]'));
+    const filterBar = section.querySelector('[data-gallery-filters]');
+    if (tiles.length === 0 || !filterBar) return;
+
+    const categories = [];
+    tiles.forEach(function (tile) {
+      const cat = tile.getAttribute('data-category');
+      if (cat && categories.indexOf(cat) === -1) categories.push(cat);
+    });
+
+    function applyFilter(category, activeBtn) {
+      Array.prototype.forEach.call(filterBar.children, function (btn) {
+        btn.setAttribute('data-active', btn === activeBtn ? 'true' : 'false');
+      });
+      tiles.forEach(function (tile) {
+        const show = category === 'All' || tile.getAttribute('data-category') === category;
+        tile.hidden = !show;
+      });
+    }
+
+    function addFilterButton(label) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gallery-filter';
+      btn.textContent = label;
+      btn.setAttribute('data-active', label === 'All' ? 'true' : 'false');
+      btn.addEventListener('click', function () { applyFilter(label, btn); });
+      filterBar.appendChild(btn);
+    }
+
+    addFilterButton('All');
+    categories.forEach(addFilterButton);
+  })();
+</script>

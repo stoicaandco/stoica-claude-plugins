@@ -1,0 +1,85 @@
+[
+  {
+    "name": "logo_text",
+    "label": "Logo text",
+    "type": "text",
+    "default": "aerden"
+  },
+  {
+    "name": "nav_links",
+    "label": "Nav links",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 0, "max": 6, "default": 4, "sorting_label_field": "nav_links.link_label" },
+    "children": [
+      { "name": "link_label", "label": "Label", "type": "text", "default": "Link" },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      }
+    ],
+    "default": [
+      { "link_label": "About", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } },
+      { "link_label": "Industries", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } },
+      { "link_label": "Projects", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } },
+      { "link_label": "Approach", "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } } }
+    ]
+  },
+  {
+    "name": "cta_text",
+    "label": "CTA text",
+    "type": "text",
+    "default": "Let's talk"
+  },
+  {
+    "name": "cta_link",
+    "label": "CTA link",
+    "type": "link",
+    "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background",
+        "type": "color",
+        "default": { "color": "#F7F8F5", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#18221F", "opacity": 100 }
+      },
+      {
+        "name": "border_color",
+        "label": "Border color",
+        "type": "color",
+        "default": { "color": "#D9DED7", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 800,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "#F7F8F5", "opacity": 100 },
+      "text_color": { "color": "#18221F", "opacity": 100 },
+      "border_color": { "color": "#D9DED7", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

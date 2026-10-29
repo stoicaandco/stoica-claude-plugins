@@ -1,0 +1,93 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "01 — The Aerden perspective"
+  },
+  {
+    "name": "marker_line_1",
+    "label": "Marker line 1",
+    "type": "text",
+    "default": "Progress,"
+  },
+  {
+    "name": "marker_line_2",
+    "label": "Marker line 2",
+    "type": "text",
+    "default": "with purpose."
+  },
+  {
+    "name": "statement_line_1",
+    "label": "Statement line 1",
+    "type": "text",
+    "default": "The future isn't built by chance."
+  },
+  {
+    "name": "statement_line_2",
+    "label": "Statement line 2",
+    "type": "text",
+    "default": "It's engineered with care."
+  },
+  {
+    "name": "description",
+    "label": "Description",
+    "type": "richtext",
+    "default": "<p>From the first question to the final detail, we connect people, disciplines and ideas. Helping ambitious organisations make better decisions — and turn complex possibilities into things that work.</p>"
+  },
+  {
+    "name": "link_text",
+    "label": "Link text",
+    "type": "text",
+    "default": "Get to know Aerden"
+  },
+  {
+    "name": "link_href",
+    "label": "Link URL",
+    "type": "link",
+    "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#18221F", "opacity": 100 }
+      },
+      {
+        "name": "muted_color",
+        "label": "Muted text color",
+        "type": "color",
+        "default": { "color": "#646C66", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "", "opacity": 100 },
+      "text_color": { "color": "#18221F", "opacity": 100 },
+      "muted_color": { "color": "#646C66", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

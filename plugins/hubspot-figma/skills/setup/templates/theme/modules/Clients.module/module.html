@@ -1,0 +1,71 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .clients {
+    background: {{ module.style.background.color|default('transparent', true) }};
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+    font-family: var(--font-sans);
+  }
+
+  .clients-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--section-pad-x);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .clients-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 32px 48px;
+    width: 100%;
+  }
+
+  .client-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .client-logo:hover {
+    opacity: 1;
+  }
+
+  .client-logo img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .client-logo span {
+    font-size: 19px;
+    white-space: nowrap;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="clients">
+  <div class="clients-inner">
+    {% if module.eyebrow %}<p class="eyebrow clients-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+
+    {% if module.clients|length > 0 %}
+      <div class="clients-row">
+        {% for client in module.clients %}
+          <a href="{{ client.link.url.href|default('#', true) }}" class="client-logo">
+            <img src="{{ get_asset_url('../../images/client-' ~ client.icon ~ '.svg') }}" alt="" loading="lazy" decoding="async" />
+            <span>{{ client.client_name }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>

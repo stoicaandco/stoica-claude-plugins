@@ -1,0 +1,94 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "05 — Built on trust"
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Partnership, in their words."
+  },
+  {
+    "name": "slides",
+    "label": "Testimonials",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 8, "default": 2, "sorting_label_field": "slides.author" },
+    "children": [
+      { "name": "portrait", "label": "Portrait", "type": "image", "default": { "src": "", "alt": "" } },
+      { "name": "client_tag", "label": "Client tag", "type": "text", "default": "CLIENT" },
+      { "name": "quote", "label": "Quote", "type": "text", "default": "A quote about working with us." },
+      { "name": "author", "label": "Author", "type": "text", "default": "Name Surname" },
+      { "name": "role", "label": "Role", "type": "text", "default": "Role · Company" }
+    ],
+    "default": [
+      {
+        "portrait": { "src": "", "alt": "" },
+        "client_tag": "NORTHLINE",
+        "quote": "Aerden asked the questions we hadn't thought to ask. That changed the quality of every decision that followed.",
+        "author": "Elena Ward",
+        "role": "Programme Director · Northline Energy"
+      },
+      {
+        "portrait": { "src": "", "alt": "" },
+        "client_tag": "COMMON GROUND",
+        "quote": "One team, from strategy to site. We always knew who was responsible — and what came next.",
+        "author": "Marcus Reid",
+        "role": "Development Lead · Common Ground"
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "card_background",
+        "label": "Card background",
+        "type": "color",
+        "default": { "color": "#F7F8F5", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#18221F", "opacity": 100 }
+      },
+      {
+        "name": "muted_color",
+        "label": "Muted text color",
+        "type": "color",
+        "default": { "color": "#646C66", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "", "opacity": 100 },
+      "card_background": { "color": "#F7F8F5", "opacity": 100 },
+      "text_color": { "color": "#18221F", "opacity": 100 },
+      "muted_color": { "color": "#646C66", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

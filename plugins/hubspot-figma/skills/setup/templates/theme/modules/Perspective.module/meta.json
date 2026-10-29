@@ -1,0 +1,6 @@
+{
+  "label": "Perspective",
+  "content_types": ["SITE_PAGE", "LANDING_PAGE"],
+  "global": false,
+  "categories": ["BODY_CONTENT"]
+}

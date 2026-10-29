@@ -1,0 +1,100 @@
+{% require_css %}
+<style>
+  {% scope_css %}
+  .perspective {
+    background: {{ module.style.background.color|default('transparent', true) }};
+    color: {{ module.style.text_color.color|default('var(--color-ink)', true) }};
+    font-family: var(--font-sans);
+  }
+
+  .perspective-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--section-pad-x);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @media (min-width: 900px) {
+    .perspective-inner {
+      flex-direction: row;
+      gap: 80px;
+    }
+  }
+
+  .perspective-marker {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 320px;
+    flex: none;
+  }
+
+  .perspective-eyebrow {
+  color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+  }
+
+  .perspective-marker-title {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .perspective-statement {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 896px;
+  }
+
+  .perspective-statement-title {
+    font-size: clamp(28px, 3.5vw, 46px);
+    line-height: 1.25;
+  }
+
+  .perspective-description {
+    font-size: 18px;
+    line-height: 1.5;
+    color: {{ module.style.muted_color.color|default('var(--color-muted)', true) }};
+    max-width: 700px;
+  }
+
+  .perspective-link {
+    font-weight: 500;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="perspective">
+  <div class="perspective-inner">
+    <div class="perspective-marker">
+      {% if module.eyebrow %}<p class="eyebrow perspective-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+      {% if module.marker_line_1 or module.marker_line_2 %}
+        <p class="perspective-marker-title">
+          {% if module.marker_line_1 %}{{ module.marker_line_1 }}<br>{% endif %}
+          {{ module.marker_line_2 }}
+        </p>
+      {% endif %}
+    </div>
+
+    <div class="perspective-statement">
+      {% if module.statement_line_1 or module.statement_line_2 %}
+        <h2 class="perspective-statement-title">
+          {% if module.statement_line_1 %}{{ module.statement_line_1 }}<br>{% endif %}
+          {{ module.statement_line_2 }}
+        </h2>
+      {% endif %}
+      {% if module.description %}
+        <div class="perspective-description">{{ module.description }}</div>
+      {% endif %}
+      {% if module.link_text %}
+        <a href="{{ module.link_href.url.href|default('#', true) }}" class="link-arrow perspective-link">
+          {{ module.link_text }} <span aria-hidden="true">&rarr;</span>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>

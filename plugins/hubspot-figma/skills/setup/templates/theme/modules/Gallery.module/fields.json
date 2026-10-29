@@ -1,0 +1,98 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "06 — A closer look"
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "default": "Progress takes many forms."
+  },
+  {
+    "name": "link_text",
+    "label": "Link text",
+    "type": "text",
+    "default": "Explore the gallery"
+  },
+  {
+    "name": "link_href",
+    "label": "Link URL",
+    "type": "link",
+    "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+  },
+  {
+    "name": "tiles",
+    "label": "Tiles",
+    "type": "group",
+    "tab": "CONTENT",
+    "occurrence": { "min": 1, "max": 8, "default": 6, "sorting_label_field": "tiles.title" },
+    "children": [
+      { "name": "image", "label": "Image", "type": "image", "default": { "src": "", "alt": "" } },
+      { "name": "category", "label": "Category", "type": "text", "default": "Places" },
+      { "name": "title", "label": "Title", "type": "text", "default": "Tile title" },
+      { "name": "description", "label": "Description", "type": "text", "default": "Tile description." },
+      {
+        "name": "size",
+        "label": "Tile size",
+        "type": "choice",
+        "display": "select",
+        "choices": [["large", "Large"], ["medium", "Medium"], ["small", "Small"]],
+        "default": "medium"
+      }
+    ],
+    "default": [
+      { "image": { "src": "", "alt": "" }, "category": "Places", "title": "Places for tomorrow", "description": "Timber, daylight and planted courtyards bring a lighter footprint to the everyday workplace.", "size": "large" },
+      { "image": { "src": "", "alt": "" }, "category": "People", "title": "People behind the progress", "description": "Engineers and designers work side by side, turning complex questions into practical decisions.", "size": "small" },
+      { "image": { "src": "", "alt": "" }, "category": "Precision", "title": "Care in every detail", "description": "Every surface has a purpose. Precision engineering connects material performance with lasting reliability.", "size": "small" },
+      { "image": { "src": "", "alt": "" }, "category": "Places", "title": "Connecting distant places", "description": "A coastal crossing shaped around its landscape, linking communities with a more resilient route.", "size": "medium" },
+      { "image": { "src": "", "alt": "" }, "category": "Energy", "title": "A different kind of power", "description": "Working with the wind and the terrain to make clean generation part of a shared energy future.", "size": "medium" },
+      { "image": { "src": "", "alt": "" }, "category": "People", "title": "Progress starts with listening", "description": "Close collaboration with our clients keeps each engineering decision connected to the people it serves.", "size": "medium" }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#18221F", "opacity": 100 }
+      },
+      {
+        "name": "muted_color",
+        "label": "Muted text color",
+        "type": "color",
+        "default": { "color": "#646C66", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "background": { "color": "", "opacity": 100 },
+      "text_color": { "color": "#18221F", "opacity": 100 },
+      "muted_color": { "color": "#646C66", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

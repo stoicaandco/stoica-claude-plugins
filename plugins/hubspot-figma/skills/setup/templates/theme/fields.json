@@ -1,0 +1,73 @@
+[
+  {
+    "name": "colors",
+    "label": "Colors",
+    "type": "group",
+    "children": [
+      { "name": "paper", "label": "Paper (page background)", "type": "color", "default": { "color": "#F7F8F5", "opacity": 100 } },
+      { "name": "white", "label": "White", "type": "color", "default": { "color": "#FFFFFF", "opacity": 100 } },
+      { "name": "ink", "label": "Ink (text)", "type": "color", "default": { "color": "#18221F", "opacity": 100 } },
+      { "name": "muted", "label": "Muted text", "type": "color", "default": { "color": "#646C66", "opacity": 100 } },
+      { "name": "line", "label": "Line / divider", "type": "color", "default": { "color": "#D9DED7", "opacity": 100 } },
+      { "name": "dark", "label": "Dark band", "type": "color", "default": { "color": "#172720", "opacity": 100 } },
+      { "name": "accent", "label": "Accent", "type": "color", "default": { "color": "#D6EDAA", "opacity": 100 } }
+    ],
+    "default": {
+      "paper": { "color": "#F7F8F5", "opacity": 100 },
+      "white": { "color": "#FFFFFF", "opacity": 100 },
+      "ink": { "color": "#18221F", "opacity": 100 },
+      "muted": { "color": "#646C66", "opacity": 100 },
+      "line": { "color": "#D9DED7", "opacity": 100 },
+      "dark": { "color": "#172720", "opacity": 100 },
+      "accent": { "color": "#D6EDAA", "opacity": 100 }
+    }
+  },
+  {
+    "name": "typography",
+    "label": "Typography",
+    "type": "group",
+    "children": [
+      {
+        "name": "body_font",
+        "label": "Body font",
+        "type": "font",
+        "load_external_fonts": false,
+        "variant": "400",
+        "default": { "size": 16, "size_unit": "px", "font": "Manrope", "font_set": "GOOGLE", "color": "#18221F", "styles": {} }
+      },
+      {
+        "name": "mono_font",
+        "label": "Label / mono font",
+        "type": "font",
+        "load_external_fonts": false,
+        "variant": "400",
+        "default": { "size": 11, "size_unit": "px", "font": "IBM Plex Mono", "font_set": "GOOGLE", "color": "#646C66", "styles": {} }
+      }
+    ],
+    "default": {
+      "body_font": { "size": 16, "size_unit": "px", "font": "Manrope", "font_set": "GOOGLE", "color": "#18221F", "styles": {} },
+      "mono_font": { "size": 11, "size_unit": "px", "font": "IBM Plex Mono", "font_set": "GOOGLE", "color": "#646C66", "styles": {} }
+    }
+  },
+  {
+    "name": "layout",
+    "label": "Layout",
+    "type": "group",
+    "children": [
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "content_width": 1296
+    }
+  }
+]

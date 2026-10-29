@@ -1,0 +1,141 @@
+[
+  {
+    "name": "heading_type",
+    "label": "Heading type",
+    "type": "choice",
+    "display": "select",
+    "choices": [["2", "H2"], ["3", "H3"]],
+    "default": "2"
+  },
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "02 — Where we make a difference"
+  },
+  {
+    "name": "title_line_1",
+    "label": "Title line 1",
+    "type": "text",
+    "default": "Different worlds."
+  },
+  {
+    "name": "title_line_2",
+    "label": "Title line 2",
+    "type": "text",
+    "default": "One joined-up approach."
+  },
+  {
+    "name": "link_text",
+    "label": "Link text",
+    "type": "text",
+    "default": "Explore all industries"
+  },
+  {
+    "name": "link_href",
+    "label": "Link URL",
+    "type": "link",
+    "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+  },
+  {
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "tab": "CONTENT",
+    "children": [
+      { "name": "image", "label": "Image", "type": "image", "default": { "src": "", "alt": "" } },
+      { "name": "title", "label": "Title", "type": "text", "default": "Card title" },
+      { "name": "description", "label": "Description", "type": "text", "default": "Card description." },
+      { "name": "tag", "label": "Tag", "type": "text", "default": "01 / Explore" },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      }
+    ],
+    "occurrence": { "min": 1, "max": 6, "default": 3, "sorting_label_field": "cards.title" },
+    "default": [
+      {
+        "image": { "src": "", "alt": "" },
+        "title": "Energy & renewables",
+        "description": "From generation to grid. Advancing a more resilient energy system.",
+        "tag": "01 / Explore industry",
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      },
+      {
+        "image": { "src": "", "alt": "" },
+        "title": "Infrastructure & places",
+        "description": "Connecting communities through thoughtful, enduring infrastructure.",
+        "tag": "02 / Explore industry",
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      },
+      {
+        "image": { "src": "", "alt": "" },
+        "title": "Advanced industry",
+        "description": "Making complex systems smarter, cleaner and ready for what's next.",
+        "tag": "03 / Explore industry",
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" } }
+      }
+    ]
+  },
+  {
+    "name": "style",
+    "label": "Style",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "columns",
+        "label": "Columns",
+        "type": "choice",
+        "display": "select",
+        "choices": [["2", "2"], ["3", "3"], ["4", "4"]],
+        "default": "3"
+      },
+      {
+        "name": "background",
+        "label": "Background (optional override)",
+        "type": "color",
+        "default": { "color": "", "opacity": 100 }
+      },
+      {
+        "name": "text_color",
+        "label": "Text color",
+        "type": "color",
+        "default": { "color": "#18221F", "opacity": 100 }
+      },
+      {
+        "name": "muted_color",
+        "label": "Muted text color",
+        "type": "color",
+        "default": { "color": "#646C66", "opacity": 100 }
+      },
+      {
+        "name": "divider_color",
+        "label": "Divider color",
+        "type": "color",
+        "default": { "color": "#D9DED7", "opacity": 100 }
+      },
+      {
+        "name": "content_width",
+        "label": "Content width",
+        "type": "number",
+        "display": "slider",
+        "min": 1000,
+        "max": 1400,
+        "step": 1,
+        "suffix": "px",
+        "default": 1296
+      }
+    ],
+    "default": {
+      "columns": "3",
+      "background": { "color": "", "opacity": 100 },
+      "text_color": { "color": "#18221F", "opacity": 100 },
+      "muted_color": { "color": "#646C66", "opacity": 100 },
+      "divider_color": { "color": "#D9DED7", "opacity": 100 },
+      "content_width": 1296
+    }
+  }
+]

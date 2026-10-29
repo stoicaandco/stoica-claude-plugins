@@ -1,0 +1,20 @@
+{
+  "name": "stoica",
+  "description": "Stoica team plugins for Claude Code (Elementor + Figma, HubSpot + Figma workflows).",
+  "owner": {
+    "name": "Stoica",
+    "url": "https://github.com/stoicaandco"
+  },
+  "plugins": [
+    {
+      "name": "elementor-figma",
+      "source": "./plugins/elementor-figma",
+      "description": "Build, compare and fix Elementor (V4) sites from Figma through the Elementor MCP server: per-site setup, page workflow, full site build."
+    },
+    {
+      "name": "hubspot-figma",
+      "source": "./plugins/hubspot-figma",
+      "description": "Build classic HubSpot CMS themes (HubL modules, templates, theme fields) from Figma: per-client setup bound to one HubSpot account, lint, draft-mode upload."
+    }
+  ]
+}
